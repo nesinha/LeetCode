@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int addDigits(int num) {
+        
+        int val=(num<10 ? num:
+               (num<100 ?(num%9==0?9:num%9):
+               (num<1000? (num%99==0?9:num%99):
+               (num<10000? (num%999==0?9:num%999):
+               (num<100000? (num%9999==0?9:num%9999):
+               (num<1000000? (num%99999==0?9:num%99999):
+               (num<10000000? (num%999999==0?9:num%999999):
+               (num<100000000? (num%9999999==0?9:num%9999999):
+               (num<1000000000? (num%99999999==0?9:num%99999999):num%999999999)))))))));
+               
+        if(val>=10) 
+        return addDigits(val);
+        else
+        return val;
+        
+    }
+};
