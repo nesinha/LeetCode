@@ -1,0 +1,31 @@
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        
+        string res="";
+        
+        if(strs.empty())
+        return res;
+        
+        
+        int col=0;
+        
+        while(true)
+        {
+        if(strs[0].size()<=col)    
+        return res;
+        
+        char c = strs[0][col];
+        
+        for(int i=1;i<strs.size();i++)
+        {
+           if(strs[i].size()>=col && c!=strs[i][col])
+           return res;
+        }
+         res+=c;
+         col++;
+        }
+        
+        return res;
+    }
+};
