@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        
+        char alphaMap[128]="";
+        int alphaUsed[128]={};
+        
+        if(s.length()!=t.length())
+        return false;
+        
+        for(int i=0;i<s.length();i++)
+        {
+            if(alphaMap[s[i]]!=0 && alphaMap[s[i]]!=t[i])
+            return false;
+            
+            if(alphaMap[s[i]]==0 && alphaUsed[t[i]])
+            return false;
+            
+            alphaMap[s[i]]=t[i];
+            alphaUsed[t[i]]=1;
+            
+        }
+        
+        
+        return true;
+        
+    }
+};
