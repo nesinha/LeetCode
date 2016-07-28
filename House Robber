@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int max(int a, int b)
+    {
+        if(a>b)
+        return a;
+        else
+        return b;
+    }
+    
+    int rob(vector<int>& nums) {
+        
+        if(nums.size()<=0)
+        return 0;
+        
+        if(nums.size()==1)
+        return nums[0];
+        
+        vector<int> arr;
+        arr.push_back(0);
+        arr.push_back(nums[0]);
+        
+        for(int i=2;i<=nums.size();i++)
+        {
+            arr.push_back(max(arr[i-1],arr[i-2]+nums[i-1]));
+        }
+        
+        int res= arr[nums.size()];
+        return res;
+        
+    }
+};
