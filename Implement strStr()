@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        if(needle=="")
+        return 0;
+        
+        int m=haystack.length(),n=needle.length();
+        
+        if(m<n)
+        return -1;
+        
+        
+            for(int i=0;i<m-n+1;i++)
+            {
+                if(haystack[i]==needle[0] && haystack[i+n-1]==needle[n-1])
+                {
+                  int hstart=i,hend=i+n-1,nstart=0,nend=n-1;
+                  
+                  while(haystack[hstart]==needle[nstart] && haystack[hend]==needle[nend] && nstart<=nend)
+                    {
+                        hstart++;
+                        nstart++;
+                        hend--;
+                        nend--;
+                    }
+                    
+                    if(nstart>nend)
+                    return i;
+                }
+            }
+        
+        
+        return -1;
+        
+    }
+};
