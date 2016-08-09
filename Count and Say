@@ -1,0 +1,43 @@
+class Solution {
+public:
+    string helper(string s)
+    {
+        string res="";
+        int count=1,i;
+        
+        if(s.length()==1)
+        {
+            return "1"+s;
+        }
+        
+        for(i=1;i<s.length();i++)
+        {
+            if(s[i]==s[i-1])
+            {
+                count++;
+            }
+            else
+            {
+                res = res + to_string(count)+s[i-1];   
+                count=1;
+            }
+        }
+        
+        return res + to_string(count)+s[i-1];
+        
+    }
+    
+    string countAndSay(int n) {
+        
+        string temp = "1";
+        
+        for(int i=1;i<n;i++)
+        {
+            
+            temp = helper(temp);
+        }
+        
+        return temp;
+        
+    }
+};
