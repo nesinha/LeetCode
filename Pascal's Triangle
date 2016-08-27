@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<vector<int>> generate(int numRows) {
+        
+        vector<int> eachlevel;
+        vector<vector<int>> res;
+        if(numRows==0)
+        return res;
+        
+        eachlevel.push_back(1);
+        
+        for(int i=0;i<numRows;i++)
+        {
+            res.push_back(eachlevel);
+            eachlevel.resize(0);
+            
+            eachlevel.push_back(1);
+            for(int j=1;j<res[i].size();j++)
+            {
+                eachlevel.push_back(res[i][j-1]+res[i][j]);
+            }
+            eachlevel.push_back(1);
+        }
+        
+        return res;
+        
+    }
+};
