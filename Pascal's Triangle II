@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> getRow(int rowIndex) {
+        vector<int> eachlevel;
+        vector<vector<int>> res;
+        
+        eachlevel.push_back(1);
+        
+        for(int i=0;i<rowIndex;i++)
+        {
+            res.push_back(eachlevel);
+            eachlevel.resize(0);
+            
+            eachlevel.push_back(1);
+            for(int j=1;j<res[i].size();j++)
+            {
+                eachlevel.push_back(res[i][j-1]+res[i][j]);
+            }
+            eachlevel.push_back(1);
+        }
+        
+        return eachlevel;
+    }
+};
