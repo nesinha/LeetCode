@@ -1,0 +1,48 @@
+class Solution {
+public:
+    int binarySearch(vector<int> &nums, int target)
+    {
+        int start=0,end=nums.size()-1;
+        int mid;
+        
+        while(start<=end)
+        {
+        mid=(start+end)/2;
+        if(nums[mid]==target)
+        return mid;
+        
+        else if(nums[mid]>target)
+        end=mid-1;
+        else
+        start=mid+1;
+        }
+        
+        return -1;
+        
+    }
+    
+    vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int> res;
+        
+        int pos=binarySearch(nums,target);
+        if(pos==-1)
+        {
+            res.push_back(-1);
+            res.push_back(-1);
+        }
+        else
+        {
+            int start=pos, end=pos;
+            while(start>=0 && nums[start]==target)
+            start--;
+            
+            while(end<=nums.size()-1 && nums[end]==target)
+            end++;
+            
+            res.push_back(start+1);
+            res.push_back(end-1);
+        }
+        
+        return res;
+    }
+};
