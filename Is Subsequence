@@ -1,0 +1,42 @@
+class Solution {
+public:
+
+    int find(string &t,char c, int a,int b)
+    {
+        for(int i=a;i<=b;i++)
+        {
+            if(t[i]==c)
+            return i;
+        }
+        return -1;
+    }
+    
+    bool isSubsequence(string s, string t) {
+        int pos;
+        int slen=s.length();
+        int tlen=t.length();
+        int i=0,j=0;
+        if(slen==0 && tlen==0)
+        return true;
+        
+        if(tlen==0)
+        return false;
+        
+        while(i<slen && j<tlen)
+        {
+            pos=find(t,s[i], j , tlen-1);
+            
+            if(pos==-1)
+            return false;
+            
+            i++;
+            j=pos+1;
+        }
+        
+        
+        if(i<slen)
+        return false;
+        
+        return true;
+    }
+};
